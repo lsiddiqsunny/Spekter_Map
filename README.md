@@ -3,6 +3,7 @@
 This project is built for an interview assignment.
 
 ## Task
+
 - Build an Android(flutter) / React / Vanilla js(Plain js) app .
 
 - Implement a fullscreen Google Map .
