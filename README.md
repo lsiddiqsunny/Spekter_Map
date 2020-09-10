@@ -1,16 +1,14 @@
-# spekter_map
+# spekter_maps
 
-A new Flutter project.
+This project is built for an interview assignment.
 
-## Getting Started
+## Task
+- Build an Android(flutter) / React / Vanilla js(Plain js) app .
 
-This project is a starting point for a Flutter application.
+- Implement a fullscreen Google Map .
 
-A few resources to get you started if this is your first Flutter project:
+- Place a marker with your current location on it .
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Implement an onClick event to open a modal on tap of the marker .
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- In the modal build a short input form with two fields (current coordinates(lat and lng you get from location ) and your name) and a button to send the data to the console.
