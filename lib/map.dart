@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+/*
+This class will show the map with a marker of user's current position.
+If user taps on the marker, it will show a dialog to take input name.
+
+*/
 
 class MapPage extends StatefulWidget {
   @override
@@ -17,14 +22,16 @@ class MapPageState extends State<MapPage> {
   CameraPosition cameraPosition =
       CameraPosition(target: LatLng(23.6850, 90.3563), zoom: 7);
   String name;
+
+  // Initiate State
   @override
-  Future<void> initState() {
+  void initState() {
     super.initState();
     markers = Set<Marker>();
     name = "";
+    _getLocation();
   }
 
-  double zoomVal = 5.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +55,7 @@ class MapPageState extends State<MapPage> {
   final TextEditingController _positionController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
 
+// This function helps to take user name as input
   Future<void> _showDialog(BuildContext context) async {
     _positionController.text = 'Lat: ' +
         position.latitude.toStringAsFixed(3) +
@@ -108,11 +116,13 @@ class MapPageState extends State<MapPage> {
         });
   }
 
+// This function helps to get location and set marker on the map
   Future<void> _getLocation() async {
     position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     setState(() {
       cameraPosition = CameraPosition(
           target: LatLng(position.latitude, position.longitude), zoom: 7);
+      markers.clear();
       markers.add(Marker(
         markerId: MarkerId(name),
         position: LatLng(position.latitude, position.longitude),
@@ -132,8 +142,8 @@ class MapPageState extends State<MapPage> {
     });
   }
 
+// This function helps to view the map
   Widget _buildGoogleMap(BuildContext context) {
-    _getLocation();
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
